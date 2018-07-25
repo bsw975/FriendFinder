@@ -10,7 +10,7 @@ var fs =  require("fs");
 // var htmlRoutes = require("./app/routing/htmlRoutes.js")
 
 var app = express();
-var PORT = 7419;
+var PORT = process.env.PORT || 7419;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
