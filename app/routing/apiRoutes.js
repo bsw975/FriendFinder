@@ -2,15 +2,21 @@ var path = require("path");
 var fs = require("fs");
 var bodyParser = require("body-parser");
 var friends = require("../../app/data/friends.js");
-
-// console.log("friends from apiRoutesw.js" + friends)
+// var friends = fs.readFileSync(path.join(__dirname, "../../app/data/friends.js"));
+// friends = JSON.parse(friends);
 
 module.exports = function (app) {
 
     // * A GET route with the url `/api/friends`. This will be used to display a JSON of all possible friends.
     app.get("/api/friends", function (req, res) {
         console.log("we're in the 'app.get(api/friends' ");
-        return res.json(friends); // return contents of friends.js file
+        // console.log(friends)
+
+        fs.readFile("app/data/friends.js", "utf8", function (err, data) { //reads file, gets an array, compares, pushes, writes
+            res.send(JSON.parse(data));
+        });
+        //The below used to work!
+        //return res.send(friends); // return contents of friends.js file
     }); // end $appget
 
     //   * A POST routes `/api/friends`. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic. 
@@ -20,8 +26,7 @@ module.exports = function (app) {
         var userScores = req.body.scores;
         var lowestDiff = 100; // set the closest diff to be quite large, the first user should reset this
 
-
-        fs.readFile("app/data/friends.js", "utf8", function (err, data) {
+        fs.readFile("app/data/friends.js", "utf8", function (err, data) { //reads file, gets an array, compares, pushes, writes
             if (err) { console.log(err) }
             else {
                 var friendsArray = JSON.parse(data); // make friends.js more usable.

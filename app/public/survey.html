@@ -71,7 +71,6 @@
         <input type="radio" id="two-5" name="q2" class="custom-control-input" value="5">
         <label class="custom-control-label" for="two-5">Strongly Disagree</label>
     </div>
-
     <h3>
         <strong>
             Question 3
@@ -92,7 +91,6 @@
         <input type="radio" id="three-5" name="q3" class="custom-control-input" value="5">
         <label class="custom-control-label" for="three-5">Strongly Disagree</label>
     </div>
-
     <h3>
         <strong>
             Question 4
@@ -113,7 +111,6 @@
         <input type="radio" id="four-5" name="q4" class="custom-control-input" value="5">
         <label class="custom-control-label" for="four-5">Strongly Disagree</label>
     </div>
-
     <h3>
         <strong>
             Question 5
@@ -122,7 +119,6 @@
     <h4>
         People can rarely upset you.
     </h4>
-
     <div class="custom-control custom-radio custom-control-inline">&nbsp;&nbsp;
         <input type="radio" id="five-1" name="q5" class="custom-control-input" value="1">
         <label class="custom-control-label" for="five-1">Strongly Agree&nbsp;&nbsp;</label>
@@ -143,7 +139,6 @@
     <h4>
         It is often difficult for you to relate to other people’s feelings.
     </h4>
-
     <div class="custom-control custom-radio custom-control-inline">&nbsp;&nbsp;
         <input type="radio" id="six-1" name="q6" class="custom-control-input" value="1">
         <label class="custom-control-label" for="six-1">Strongly Agree&nbsp;&nbsp;</label>
@@ -176,7 +171,6 @@
         <input type="radio" id="seven-5" name="q7" class="custom-control-input" value="5">
         <label class="custom-control-label" for="seven-5">Strongly Disagree</label>
     </div>
-
     <h3>
         <strong>
             Question 8
@@ -243,7 +237,7 @@
         </button>
     </p>
     <a href="/api/friends">API Friends List</a> |
-    <a href="/github">GitHub Repo</a>
+    <a href="http://github.com/bsw975/friendfinder">GitHub Repo</a>
     <div id="results-modal" class="modal fade" role="dialog" style="display: none;">
         <div class="modal-dialog">
 
@@ -282,24 +276,14 @@
                     "photo": $("#photo-link").val(),
                     "scores": answers
                 }
-                //https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
-                // Syntax:
-                // $.post(URL,data,callback);
-                // The required URL parameter specifies the URL you wish to request.
-                // The optional data parameter specifies some data to send along with the request.
-                // The optional callback parameter is the name of a function to be executed if the request succeeds.
-                // The following example uses the $.post() method to send some data along with the request
-
-                // post the single friend object
                 $.post("/api/friends", friendObject, function (data) {
                     $("#results-modal").modal();
                     document.getElementById("match-name").textContent = data.name;
                     document.getElementById("match-img").src = data.photo;
-                }); // end post promise
-            }); // end submit click thing
+                }); // end post function
+            }); // end submit click action
 
     </script>
 </body>
-
 
 </html>

@@ -15,14 +15,12 @@ var PORT = 7419;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/app/public'));
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "/app/public/home.html"));
+  });
 
 require("./app/routing/apiRoutes.js")(app); // (app) represents the argument used in 'apiRoutes.js'
-// app.post("/api/friends", function (req, res) {
-//     // req.body hosts is equal to the JSON post sent from the user
-//     // This works because of our body-parser middleware
-//     var newFriend = req.body;
-//     console.log("req.body is " + JSON.stringify(req.body))
-// })
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
